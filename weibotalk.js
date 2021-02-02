@@ -227,7 +227,7 @@ function get_talk_id(page) {
                 return
             }
 
-            var groups = obj.cards[0]["card_group"];
+            var groups = obj.cards[1]["card_group"];
             // for(card in obj.cards){
             //     if(card.card_type=="11" && card.card_type_name==undefined){
             //         console.log("find group! card.card_type:" + card.card_type)
