@@ -248,6 +248,9 @@ function get_talk_id(page) {
                 $.name_list.push(name)
                 var val = groups[i].desc1;
                 $.val_list.push(val)
+                console.log("获取等级："+val);
+
+                console.log("scheme："+groups[i].scheme);
 
                 var r = re.exec(groups[i].scheme)
                 console.log("r.length"+r.length)
