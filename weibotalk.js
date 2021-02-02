@@ -219,7 +219,7 @@ function get_talk_id(page) {
                 throw new Error(error)
             }
             var body = response.body;
-            console.log("获取超话body："+ body)
+            //console.log("获取超话body："+ body)
             var obj = JSON.parse(body);
             if (obj.hasOwnProperty('errmsg')||obj.cards==undefined||obj.cards==null) {
                 $.msg($.name, "🚨获取超话ID出现错误", `⚠️微博原话：${obj.errmsg}\n`)
@@ -234,6 +234,7 @@ function get_talk_id(page) {
                     break
                 }
             }
+            console.log("groups length:" + groups.length)
             
             var re = /containerid=(\w+)/g
             number = groups.length;
