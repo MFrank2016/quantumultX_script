@@ -226,21 +226,33 @@ function get_talk_id(page) {
                 resolve()
                 return
             }
-            var group = obj.cards[0]["card_group"];
-            number = group.length;
-            for (i = 0; i < number; i++) {
-                var name = group[i]["title_sub"];
+
+            var groups = obj.cards[0]["card_group"];
+            for(card in obj.cards){
+                if(card.card_type=="11" && card.card_type_name==undefined){
+                    groups = card.card_group
+                    break
+                }
+            }
+            
+            var re = /containerid=(\w+)/g
+            number = groups.length;
+            for (group in groups) {
+                if (group.card_type != "8"){
+                    continue
+                }
+                var name = group.title_sub
                 console.log("获取超话标题："+name);
                 $.name_list.push(name)
-                var val = group[i].desc;
+                var val = group.desc1;
                 $.val_list.push(val)
-                var id = group[i].scheme.slice(33, 71);
+
+                var r = re.exec(group.scheme)
+                var id = r[1]
                 $.id_list.push(id)
-                if (debug) {
-                    console.log(name)
-                    console.log(val)
-                    console.log(id)
-                }
+                console.log(name)
+                console.log(val)
+                console.log(id)
                 // checkin(id, name, val, time);
             }
             resove()
