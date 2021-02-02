@@ -185,6 +185,8 @@ function get_page_number() {
                 return
             }
             $.allnumber = obj.cardlistInfo.total;
+            console.log("======================");
+            console.log("body:" + body);
             console.log("当前已关注超话" + $.allnumber + "个");
             //  $.message.push(`当前已关注超话${allnumber}个`);
             $.pagenumber = Math.ceil($.allnumber / 20);
@@ -200,12 +202,12 @@ function get_talk_id(page) {
         new RegExp("&page=.*?&"),
         "&page=" + page + "&"
     );
-    //console.log(getlisturl);
+    console.log(getlisturl);
     var idrequest = {
         url: getlisturl,
         header: $.listheaders
     };
-    // console.log(idrequest)
+    console.log(idrequest)
     return new Promise((resove) => {
         $.get(idrequest, (error, response, data) => {
             if (error) {
@@ -222,6 +224,7 @@ function get_talk_id(page) {
             number = group.length;
             for (i = 0; i < number; i++) {
                 var name = group[i]["title_sub"];
+                console.log("获取超话标题："+name);
                 $.name_list.push(name)
                 var val = group[i].desc;
                 $.val_list.push(val)
