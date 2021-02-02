@@ -208,12 +208,11 @@ function get_talk_id(page) {
         new RegExp("&page=.*?&"),
         "&page=" + page + "&"
     );
-    console.log(getlisturl);
     var idrequest = {
         url: getlisturl,
         header: $.listheaders
     };
-    console.log(idrequest)
+    console.log("获取超话签到id request：" + idrequest)
     return new Promise((resove) => {
         $.get(idrequest, (error, response, data) => {
             if (error) {
