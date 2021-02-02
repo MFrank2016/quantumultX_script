@@ -250,6 +250,10 @@ function get_talk_id(page) {
                 $.val_list.push(val)
 
                 var r = re.exec(groups[i].scheme)
+                console.log("r.length"+r.length)
+                if (r.length <= 0){
+                    continue
+                }
                 var id = r[1]
                 $.id_list.push(id)
                 console.log(name)
