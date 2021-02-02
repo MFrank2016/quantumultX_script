@@ -185,7 +185,7 @@ function get_page_number() {
                 return
             }
             console.log("======================");
-            console.log("obj.cards:" + obj.cards)
+            console.log("obj.cards length:" + obj.cards.length)
             obj.cards.forEach((x)=>{
                 if(x.card_type=="11" && x.card_type_name==undefined){
                     $.allnumber = x.card_group.length;
@@ -237,11 +237,8 @@ function get_talk_id(page) {
             console.log("groups length:" + groups.length)
             
             var re = /containerid=(\w+)/g
-            number = groups.length;
             for (group in groups) {
-                if (group.card_type != "8"){
-                    continue
-                }
+                console.log("card_type:"+group.card_type)
                 var name = group.title_sub
                 console.log("获取超话标题："+name);
                 $.name_list.push(name)
