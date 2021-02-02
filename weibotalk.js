@@ -228,29 +228,28 @@ function get_talk_id(page) {
             }
 
             var groups = obj.cards[0]["card_group"];
-            for(card in obj.cards){
-                if(card.card_type=="11" && card.card_type_name==undefined){
-                    console.log("find group! card.card_type:" + card.card_type)
-                    groups = card.card_group
-                    break
-                }
-            }
-            console.log("groups length:" + groups.length)
+            // for(card in obj.cards){
+            //     if(card.card_type=="11" && card.card_type_name==undefined){
+            //         console.log("find group! card.card_type:" + card.card_type)
+            //         groups = card.card_group
+            //         break
+            //     }
+            // }
+            var num = groups.length
+            console.log("groups length:" + num)
             var re = /containerid=(\w+)/g
-            for (group in groups) {
-                console.dir(group)
-
-                console.log("card_type:"+group.card_type)
-                if (group.card_type == "42"){
+            for (var i = 0;i< num;i++) {
+                console.log("card_type:"+groups[i].card_type)
+                if (groups[i].card_type == "42"){
                     continue
                 }
-                var name = group.title_sub
+                var name = groups[i].title_sub
                 console.log("获取超话标题："+name);
                 $.name_list.push(name)
-                var val = group.desc1;
+                var val = groups[i].desc1;
                 $.val_list.push(val)
 
-                var r = re.exec(group.scheme)
+                var r = re.exec(groups[i].scheme)
                 var id = r[1]
                 $.id_list.push(id)
                 console.log(name)
