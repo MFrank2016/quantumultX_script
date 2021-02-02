@@ -230,15 +230,20 @@ function get_talk_id(page) {
             var groups = obj.cards[0]["card_group"];
             for(card in obj.cards){
                 if(card.card_type=="11" && card.card_type_name==undefined){
+                    console.log("find group! card.card_type:" + card.card_type)
                     groups = card.card_group
                     break
                 }
             }
             console.log("groups length:" + groups.length)
-            
             var re = /containerid=(\w+)/g
             for (group in groups) {
+                console.dir(group)
+
                 console.log("card_type:"+group.card_type)
+                if (group.card_type == "42"){
+                    continue
+                }
                 var name = group.title_sub
                 console.log("获取超话标题："+name);
                 $.name_list.push(name)
