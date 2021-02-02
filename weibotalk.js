@@ -237,7 +237,6 @@ function get_talk_id(page) {
             // }
             var num = groups.length
             console.log("groups length:" + num)
-            var re = /containerid=(\w+)/g
             for (var i = 0;i< num;i++) {
                 console.log("card_type:"+groups[i].card_type)
                 if (groups[i].card_type == "42"){
@@ -251,7 +250,7 @@ function get_talk_id(page) {
                 console.log("获取等级："+val);
 
                 console.log("scheme："+groups[i].scheme);
-
+                var re = /containerid=(\w+)/g
                 var r = re.exec(groups[i].scheme)
                 console.log("r.length"+r.length)
                 if (r.length <= 0){
