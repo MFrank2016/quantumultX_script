@@ -184,9 +184,15 @@ function get_page_number() {
                 resolve()
                 return
             }
-            $.allnumber = obj.cardlistInfo.total;
             console.log("======================");
-            console.log("body:" + body);
+            console.log("obj.cards:" + obj.cards)
+            obj.cards.forEach((x)=>{
+                if(x.card_type=="11" && x.card_type_name==undefined){
+                    $.allnumber = x.card_group.length;
+                }
+            })
+            console.log("======================");
+            // console.log("body:" + body);
             console.log("当前已关注超话" + $.allnumber + "个");
             //  $.message.push(`当前已关注超话${allnumber}个`);
             $.pagenumber = Math.ceil($.allnumber / 20);
